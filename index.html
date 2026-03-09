@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Наши Двери — Тольятти</title>
+  <style>
+    :root {
+      --red: #d70000;
+      --gold: #d2b117;
+      --black: #101010;
+      --white: #ffffff;
+      --gray-bg: #dcdcdc;
+      --text: #111111;
+      --muted: #6e6e6e;
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --shadow: 0 18px 45px rgba(0,0,0,.22);
+      --container: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    button, input, select { font: inherit; }
+    .container { width: min(var(--container), calc(100% - 32px)); margin: 0 auto; }
+    .hidden { display: none !important; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 16px 28px;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #ff1717, var(--red));
+      color: #fff;
+    }
+    .btn-outline-light {
+      background: transparent;
+      border-color: rgba(255,255,255,.32);
+      color: #fff;
+    }
+    .btn-outline-dark {
+      background: #fff;
+      border-color: var(--red);
+      color: #111;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      backdrop-filter: blur(10px);
+    }
+    .topbar-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 24px;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-logo {
+      border: 2px solid #c31717;
+      color: #c31717;
+      font-weight: 900;
+      padding: 10px 12px;
+      white-space: nowrap;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .brand-title { font-size: 16px; font-weight: 700; line-height: 1.1; }
+    .top-note { font-size: 16px; line-height: 1.15; }
+    .top-note b { color: #24b000; }
+    .phone { font-size: 16px; line-height: 1.1; font-weight: 700; }
+    .phone strong { font-size: 20px; }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 92px);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.58)),
+        url('hero-bg.jpg') center/cover no-repeat;
+      color: #fff;
+      display: flex;
+      align-items: center;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items: center;
+      padding: 42px 0 56px;
+    }
+    h1 {
+      font-size: clamp(34px, 5vw, 66px);
+      line-height: 1.04;
+      margin: 0 0 18px;
+      max-width: 920px;
+    }
+    .hero-sub {
+      font-size: clamp(18px, 2.1vw, 28px);
+      max-width: 760px;
+      margin: 0 0 28px;
+      color: rgba(255,255,255,.94);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px 26px;
+      max-width: 980px;
+    }
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex: 0 0 48px;
+    }
+
+    .quiz-shell {
+      background: rgba(255,255,255,.93);
+      border-radius: 34px;
+      overflow: hidden;
+      color: #111;
+      box-shadow: var(--shadow);
+    }
+    .quiz-media {
+      aspect-ratio: 16/8;
+      background: #f0f0f0;
+    }
+    .quiz-media img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .quiz-panel {
+      background: var(--gray-bg);
+      padding: 22px;
+    }
+    .progress-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-weight: 900;
+      border-radius: 10px;
+      padding: 9px 12px;
+      margin-bottom: 10px;
+    }
+    .progress-bar {
+      height: 6px;
+      background: #ebb0b0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--red);
+      transition: width .25s ease;
+    }
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+    .quiz-title {
+      font-size: clamp(28px, 4vw, 54px);
+      line-height: 1.05;
+      text-align: center;
+      margin: 0 0 26px;
+      font-weight: 900;
+    }
+    .option-grid {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.55);
+      padding: 16px 18px;
+      border: 1px solid rgba(0,0,0,.06);
+      cursor: pointer;
+      user-select: none;
+    }
+    .radio {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 3px solid #b3b3b3;
+      background: #fff;
+      flex: 0 0 24px;
+    }
+    .option.selected .radio {
+      border-color: #000;
+      background: #000;
+      box-shadow: inset 0 0 0 5px #fff;
+    }
+    .select-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .select-card {
+      border-radius: 26px;
+      overflow: hidden;
+      background: #fff;
+      border: 3px solid transparent;
+      cursor: pointer;
+      position: relative;
+    }
+    .select-card img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+    .select-card div {
+      padding: 14px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 24px;
+    }
+    .select-card.selected {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(215,0,0,.15);
+    }
+    .select-card.selected::after {
+      content: '✓';
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-size: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quiz-nav {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .back-btn {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: none;
+      background: #cfcfcf;
+      font-size: 36px;
+      cursor: pointer;
+    }
+    .quiz-form {
+      display: grid;
+      gap: 18px;
+      max-width: 720px;
+      margin: 0 auto 24px;
+    }
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #222;
+      font-size: 18px;
+    }
+    .field input {
+      width: 100%;
+      min-height: 62px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.1);
+      background: #fff;
+      padding: 14px 18px;
+      font-size: 18px;
+    }
+    .success-box {
+      background: rgba(255,255,255,.72);
+      border-radius: 24px;
+      padding: 22px;
+      text-align: center;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .section { padding: 82px 0; }
+    .section-title {
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.05;
+      margin: 0 0 14px;
+      text-align: center;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 860px;
+      margin: 0 auto 30px;
+      font-size: 20px;
+    }
+
+    .catalog-controls {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .catalog-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .door-card {
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0,0,0,.08);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .door-card img {
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+    .door-card-body { padding: 16px; }
+    .door-card-body h3 { margin: 0 0 8px; font-size: 22px; }
+    .door-card-body p { margin: 0 0 16px; color: #666; }
+
+    .installed-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .installed-card {
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0,0,0,.08);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .installed-card img { aspect-ratio: 4 / 5; object-fit: cover; }
+    .installed-card div { padding: 16px; font-weight: 700; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.68);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 16px;
+    }
+    .modal.open { display: flex; }
+    .modal-card {
+      width: min(100%, 520px);
+      background: #f1f1f1;
+      border-radius: 24px;
+      padding: 34px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+    .modal-close {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: #ddd;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .modal-card h3 {
+      margin: 0 0 22px;
+      font-size: 28px;
+      line-height: 1.25;
+      text-align: center;
+    }
+    .modal-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .footer {
+      background: #101010;
+      color: rgba(255,255,255,.9);
+      padding: 20px 0;
+      text-align: center;
+      font-weight: 700;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 1100px) {
+      .topbar-inner { grid-template-columns: 1fr 1fr; }
+      .hero-grid, .catalog-grid, .installed-grid { grid-template-columns: 1fr 1fr; }
+      .features { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 20px, var(--container)); }
+      .topbar-inner, .hero-grid, .catalog-grid, .installed-grid, .select-cards { grid-template-columns: 1fr; }
+      .topbar-inner { gap: 14px; }
+      .hero { min-height: auto; }
+      h1 { font-size: 30px; }
+      .hero-sub { font-size: 18px; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .btn { width: 100%; min-height: 58px; }
+      .feature { font-size: 16px; align-items: flex-start; }
+      .feature-icon { width: 42px; height: 42px; flex-basis: 42px; }
+      .quiz-panel { padding: 16px; }
+      .quiz-title { font-size: 30px; }
+      .quiz-nav { grid-template-columns: 62px 1fr; }
+      .back-btn { width: 62px; height: 62px; font-size: 28px; }
+      .section { padding: 62px 0; }
+      .section-title { font-size: 34px; }
+      .section-subtitle { font-size: 17px; }
+      .modal-card { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-logo">Наши Двери</div>
+        <div class="brand-title">Межкомнатные и входные двери<br>от производителя в Тольятти</div>
+      </div>
+      <div class="top-note"><b>✓</b> Более 8.500 дверей установлено<br><b>✓</b> Опыт работы с 2017 года</div>
+      <button class="btn btn-outline-dark" data-open-modal>Перезвоните мне</button>
+      <div class="phone"><strong>8 (8482) 94-20-01</strong><br><span style="font-weight:500;">ежедневно без выходных</span></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Пройдите тест и узнайте стоимость межкомнатных и входных дверей в Тольятти по цене производителя + получите каталог</h1>
+        <p class="hero-sub">Рабочий квиз, всплывающая форма и каталог дверей без лишних блоков.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#quiz">Пройти тест и узнать стоимость</a>
+          <button class="btn btn-outline-light" data-open-modal>Заказать обратный звонок</button>
+        </div>
+
+        <div class="features">
+          <div class="feature"><span class="feature-icon">✓</span><span>Прямые поставки. Без наценок. Экономия до 30%.</span></div>
+          <div class="feature"><span class="feature-icon">✓</span><span>Бесплатный замер и расчет дверей.</span></div>
+          <div class="feature"><span class="feature-icon">✓</span><span>Большой выбор моделей и цветов дверей.</span></div>
+          <div class="feature"><span class="feature-icon">✓</span><span>Реальная расширенная гарантия.</span></div>
+        </div>
+      </div>
+
+      <div class="quiz-shell" id="quiz">
+        <div class="quiz-media">
+          <img id="quizHeroImage" src="interior-01.jpg" alt="Двери" />
+        </div>
+        <div class="quiz-panel">
+          <div class="progress-badge" id="progressBadge">0%</div>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+          <div class="quiz-step active" data-step="0">
+            <div class="quiz-title">Какие двери вас интересуют?</div>
+            <div class="select-cards">
+              <div class="select-card" data-name="doorType" data-value="Межкомнатные">
+                <img src="interior-02.jpg" alt="Межкомнатные двери">
+                <div>Межкомнатные</div>
+              </div>
+              <div class="select-card" data-name="doorType" data-value="Входные">
+                <img src="entry-01.jpg" alt="Входные двери">
+                <div>Входные</div>
+              </div>
+            </div>
+            <div class="quiz-nav">
+              <button class="back-btn" type="button" disabled style="opacity:.45; cursor:default;">←</button>
+              <button class="btn btn-primary" type="button" id="nextStep0">Далее</button>
+            </div>
+          </div>
+
+          <div class="quiz-step" data-step="1">
+            <div class="quiz-title">Какой сегмент вас интересует?</div>
+            <div class="option-grid">
+              <label class="option" data-name="segment" data-value="Эконом"><span class="radio"></span><span>Эконом</span></label>
+              <label class="option" data-name="segment" data-value="Стандарт"><span class="radio"></span><span>Стандарт</span></label>
+              <label class="option" data-name="segment" data-value="Премиум"><span class="radio"></span><span>Премиум</span></label>
+            </div>
+            <div class="quiz-nav">
+              <button class="back-btn" type="button" data-prev>←</button>
+              <button class="btn btn-outline-dark" type="button" data-next>Далее</button>
+            </div>
+          </div>
+
+          <div class="quiz-step" data-step="2">
+            <div class="quiz-title">Сколько дверей вам нужно?</div>
+            <div class="option-grid">
+              <label class="option" data-name="count" data-value="1"><span class="radio"></span><span>1 шт</span></label>
+              <label class="option" data-name="count" data-value="2"><span class="radio"></span><span>2 шт</span></label>
+              <label class="option" data-name="count" data-value="3"><span class="radio"></span><span>3 шт</span></label>
+              <label class="option" data-name="count" data-value="4+"><span class="radio"></span><span>Более 4 шт</span></label>
+            </div>
+            <div class="quiz-nav">
+              <button class="back-btn" type="button" data-prev>←</button>
+              <button class="btn btn-outline-dark" type="button" data-next>Далее</button>
+            </div>
+          </div>
+
+          <div class="quiz-step" data-step="3">
+            <div class="quiz-title">Когда планируете ставить двери?</div>
+            <div class="option-grid">
+              <label class="option" data-name="timing" data-value="В ближайшее время"><span class="radio"></span><span>В ближайшее время</span></label>
+              <label class="option" data-name="timing" data-value="В течение месяца"><span class="radio"></span><span>В течение месяца</span></label>
+              <label class="option" data-name="timing" data-value="Позже"><span class="radio"></span><span>Через несколько месяцев</span></label>
+            </div>
+            <div class="quiz-nav">
+              <button class="back-btn" type="button" data-prev>←</button>
+              <button class="btn btn-outline-dark" type="button" data-next>Далее</button>
+            </div>
+          </div>
+
+          <div class="quiz-step" data-step="4">
+            <div class="quiz-title">Как с вами удобнее связаться?</div>
+            <div class="option-grid">
+              <label class="option" data-name="contactWay" data-value="WhatsApp"><span class="radio"></span><span>WhatsApp</span></label>
+              <label class="option" data-name="contactWay" data-value="Telegram"><span class="radio"></span><span>Telegram</span></label>
+              <label class="option" data-name="contactWay" data-value="По телефону"><span class="radio"></span><span>На мобильный</span></label>
+            </div>
+            <div class="quiz-nav">
+              <button class="back-btn" type="button" data-prev>←</button>
+              <button class="btn btn-outline-dark" type="button" data-next>Далее</button>
+            </div>
+          </div>
+
+          <div class="quiz-step" data-step="5">
+            <div class="quiz-title">Оставьте контакты для расчета стоимости</div>
+            <form class="quiz-form" id="quizForm">
+              <div class="field">
+                <label for="quizName">Ваше имя *</label>
+                <input id="quizName" name="name" type="text" required>
+              </div>
+              <div class="field">
+                <label for="quizPhone">Ваш телефон *</label>
+                <input id="quizPhone" name="phone" type="tel" required>
+              </div>
+              <div class="quiz-nav">
+                <button class="back-btn" type="button" data-prev>←</button>
+                <button class="btn btn-primary" type="submit">Получить расчет</button>
+              </div>
+            </form>
+            <div class="success-box hidden" id="quizSuccess">Спасибо! Заявка отправлена.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Выберите дверь</h2>
+      <p class="section-subtitle">Сейчас оставил только ваши примеры: 3 межкомнатные и 1 входная дверь.</p>
+      <div class="catalog-controls">
+        <button class="btn btn-outline-dark catalog-btn active" data-filter="all">Все двери</button>
+        <button class="btn btn-outline-dark catalog-btn" data-filter="interior">Межкомнатные</button>
+        <button class="btn btn-outline-dark catalog-btn" data-filter="entry">Входные</button>
+      </div>
+      <div class="catalog-grid" id="catalogGrid">
+        <article class="door-card" data-type="interior"><img src="interior-01.jpg" alt="Межкомнатная дверь 1"><div class="door-card-body"><h3>Модель 01</h3><p>Межкомнатная дверь</p><button class="btn btn-primary" data-open-modal>Узнать цену</button></div></article>
+        <article class="door-card" data-type="interior"><img src="interior-02.jpg" alt="Межкомнатная дверь 2"><div class="door-card-body"><h3>Модель 02</h3><p>Межкомнатная дверь</p><button class="btn btn-primary" data-open-modal>Узнать цену</button></div></article>
+        <article class="door-card" data-type="interior"><img src="interior-03.jpg" alt="Межкомнатная дверь 3"><div class="door-card-body"><h3>Модель 03</h3><p>Межкомнатная дверь</p><button class="btn btn-primary" data-open-modal>Узнать цену</button></div></article>
+        <article class="door-card" data-type="entry"><img src="entry-01.jpg" alt="Входная дверь 1"><div class="door-card-body"><h3>Модель 04</h3><p>Входная дверь</p><button class="btn btn-primary" data-open-modal>Узнать цену</button></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Фото установленных дверей</h2>
+      <div class="installed-grid">
+        <article class="installed-card"><img src="interior-01.jpg" alt="Фото двери 1"><div>Пример установки 1</div></article>
+        <article class="installed-card"><img src="interior-02.jpg" alt="Фото двери 2"><div>Пример установки 2</div></article>
+        <article class="installed-card"><img src="interior-03.jpg" alt="Фото двери 3"><div>Пример установки 3</div></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="callbackModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" type="button" aria-label="Закрыть">×</button>
+      <h3>Заполните форму на обратный звонок и мы обязательно перезвоним в течение 15 минут</h3>
+      <form class="modal-form" id="callbackForm">
+        <div class="field">
+          <label for="callbackName">Ваше имя *</label>
+          <input id="callbackName" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="callbackPhone">Ваш телефон *</label>
+          <input id="callbackPhone" name="phone" type="tel" required>
+        </div>
+        <button class="btn btn-outline-dark" type="submit">Заказать звонок</button>
+      </form>
+      <div class="success-box hidden" id="callbackSuccess">Спасибо! Заявка на обратный звонок отправлена.</div>
+    </div>
+  </div>
+
+  <footer class="footer">Наши Двери</footer>
+
+  <script>
+    const quizState = {
+      doorType: '',
+      segment: '',
+      count: '',
+      timing: '',
+      contactWay: ''
+    };
+
+    const steps = [...document.querySelectorAll('.quiz-step')];
+    const progressBadge = document.getElementById('progressBadge');
+    const progressFill = document.getElementById('progressFill');
+    const quizHeroImage = document.getElementById('quizHeroImage');
+    const totalSteps = 6;
+    let currentStep = 0;
+
+    function updateProgress() {
+      const percent = Math.round((currentStep / (totalSteps - 1)) * 100);
+      progressBadge.textContent = percent + '%';
+      progressFill.style.width = percent + '%';
+    }
+
+    function showStep(index) {
+      currentStep = index;
+      steps.forEach((step, i) => step.classList.toggle('active', i === index));
+      updateProgress();
+    }
+
+    function getRequiredKeyByStep(stepIndex) {
+      return ['doorType', 'segment', 'count', 'timing', 'contactWay', null][stepIndex];
+    }
+
+    function canGoNext() {
+      const key = getRequiredKeyByStep(currentStep);
+      return key ? Boolean(quizState[key]) : true;
+    }
+
+    function goNext() {
+      if (!canGoNext()) {
+        alert('Пожалуйста, выберите вариант.');
+        return;
+      }
+      if (currentStep < totalSteps - 1) {
+        showStep(currentStep + 1);
+      }
+    }
+
+    document.getElementById('nextStep0').addEventListener('click', goNext);
+    document.querySelectorAll('[data-next]').forEach(btn => btn.addEventListener('click', goNext));
+    document.querySelectorAll('[data-prev]').forEach(btn => btn.addEventListener('click', () => {
+      if (currentStep > 0) showStep(currentStep - 1);
+    }));
+
+    document.querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', () => {
+        const name = option.dataset.name;
+        const value = option.dataset.value;
+        quizState[name] = value;
+        document.querySelectorAll(`.option[data-name="${name}"]`).forEach(el => el.classList.remove('selected'));
+        option.classList.add('selected');
+      });
+    });
+
+    document.querySelectorAll('.select-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const value = card.dataset.value;
+        quizState.doorType = value;
+        document.querySelectorAll('.select-card').forEach(el => el.classList.remove('selected'));
+        card.classList.add('selected');
+
+        if (value === 'Межкомнатные') {
+          quizHeroImage.src = 'interior-02.jpg';
+          setCatalogFilter('interior');
+        } else {
+          quizHeroImage.src = 'entry-01.jpg';
+          setCatalogFilter('entry');
+        }
+      });
+    });
+
+    const quizForm = document.getElementById('quizForm');
+    const quizSuccess = document.getElementById('quizSuccess');
+
+    quizForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      quizForm.classList.add('hidden');
+      quizSuccess.classList.remove('hidden');
+      document.getElementById('catalogGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    const modal = document.getElementById('callbackModal');
+    const callbackForm = document.getElementById('callbackForm');
+    const callbackSuccess = document.getElementById('callbackSuccess');
+    const openModalButtons = document.querySelectorAll('[data-open-modal]');
+    const closeModalButton = document.querySelector('.modal-close');
+
+    function openModal() {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    openModalButtons.forEach(btn => btn.addEventListener('click', openModal));
+    closeModalButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    callbackForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      callbackForm.classList.add('hidden');
+      callbackSuccess.classList.remove('hidden');
+    });
+
+    const catalogButtons = document.querySelectorAll('.catalog-btn');
+    const cards = document.querySelectorAll('.door-card');
+
+    function setCatalogFilter(filter) {
+      catalogButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
+      cards.forEach(card => {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+          return;
+        }
+        card.classList.toggle('hidden', card.dataset.type !== filter);
+      });
+    }
+
+    catalogButtons.forEach(btn => btn.addEventListener('click', () => setCatalogFilter(btn.dataset.filter)));
+
+    showStep(0);
+    setCatalogFilter('all');
+  </script>
+</body>
+</html>
