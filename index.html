@@ -3,24 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Наши Двери - Тольятти</title>
+  <title>Наши Двери — Тольятти</title>
   <style>
     :root{
       --red:#d70000;
       --red-dark:#b30000;
       --gold:#caa64a;
-      --gold-2:#b79243;
       --text:#111;
       --muted:#666;
-      --bg:#f6f6f6;
-      --card:#ffffff;
       --line:rgba(0,0,0,.07);
       --shadow:0 10px 30px rgba(0,0,0,.10);
       --shadow-lg:0 18px 50px rgba(0,0,0,.18);
       --container:1180px;
-      --radius-xl:28px;
-      --radius-lg:22px;
-      --radius-md:16px;
     }
 
     *{box-sizing:border-box}
@@ -146,14 +140,6 @@
       letter-spacing:-.02em;
     }
 
-    .hero-sub{
-      margin:0 0 22px;
-      max-width:620px;
-      font-size:clamp(15px, 1.8vw, 22px);
-      line-height:1.35;
-      color:rgba(255,255,255,.92);
-    }
-
     .hero-actions{
       display:flex;
       gap:12px;
@@ -271,12 +257,6 @@
       font-weight:800;
       margin-bottom:8px;
     }
-    .mini-cta-text{
-      font-size:13px;
-      color:#555;
-      margin-bottom:12px;
-      line-height:1.35;
-    }
 
     .section{
       padding:58px 0;
@@ -286,14 +266,6 @@
       text-align:center;
       font-size:clamp(26px, 3vw, 42px);
       line-height:1.08;
-    }
-    .section-subtitle{
-      margin:0 auto 22px;
-      max-width:760px;
-      text-align:center;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.4;
     }
 
     .quiz-shell{
@@ -556,11 +528,6 @@
       margin-bottom:6px;
       font-size:15px;
     }
-    .beauty-card span{
-      color:#666;
-      font-size:13px;
-      line-height:1.35;
-    }
 
     .installed-grid{
       display:grid;
@@ -691,8 +658,6 @@
       <div class="hero-content">
         <h1>Пройдите тест и узнайте стоимость межкомнатных и входных дверей в Тольятти по цене производителя + получите каталог</h1>
 
-        <p class="hero-sub">Красивый рабочий сайт с квизом, каталогом, модальным окном и аккуратной подачей. Теперь всё должно помещаться и выглядеть легче.</p>
-
         <div class="hero-actions">
           <a class="btn btn-primary" href="#quiz">Пройти тест и узнать стоимость</a>
           <button class="btn btn-outline-light" data-open-modal>Заказать обратный звонок</button>
@@ -727,7 +692,7 @@
             <div class="feature-icon">✓</div>
             <div>
               <strong>Современный дизайн</strong>
-              <span>Страница выглядит аккуратно и нормально читается на экране.</span>
+              <span>Аккуратная подача и удобная структура страницы.</span>
             </div>
           </div>
         </div>
@@ -752,8 +717,7 @@
         </div>
 
         <div class="mini-cta">
-          <div class="mini-cta-title">Подберите дверь без долгих переписок</div>
-          <div class="mini-cta-text">Короткий квиз ниже поможет понять, какой каталог и какие модели показать клиенту в первую очередь.</div>
+          <div class="mini-cta-title">Быстрый подбор двери</div>
           <a href="#quiz" class="btn btn-primary" style="width:100%;">Перейти к подбору</a>
         </div>
       </div>
@@ -763,7 +727,6 @@
   <section class="section" id="quiz">
     <div class="container">
       <h2 class="section-title">Подберите дверь за 1 минуту</h2>
-      <p class="section-subtitle">Квиз сделан компактнее, чтобы полностью помещался и не выглядел перегруженным.</p>
 
       <div class="quiz-shell">
         <div class="quiz-media">
@@ -867,18 +830,9 @@
       </div>
 
       <div class="beauty-strip">
-        <div class="beauty-card">
-          <strong>Современный подбор</strong>
-          <span>Клиенту легче пройти короткий квиз, чем читать длинную перегруженную страницу.</span>
-        </div>
-        <div class="beauty-card">
-          <strong>Чистый каталог</strong>
-          <span>После квиза можно показать только межкомнатные или только входные модели.</span>
-        </div>
-        <div class="beauty-card">
-          <strong>Живые действия</strong>
-          <span>Кнопки открывают формы, фильтры переключают карточки, а галерея листается.</span>
-        </div>
+        <div class="beauty-card"><strong>Быстрый выбор</strong></div>
+        <div class="beauty-card"><strong>Удобная подача</strong></div>
+        <div class="beauty-card"><strong>Рабочие кнопки и фильтры</strong></div>
       </div>
     </div>
   </section>
@@ -886,7 +840,6 @@
   <section class="section">
     <div class="container">
       <h2 class="section-title">Каталог дверей</h2>
-      <p class="section-subtitle">Кнопки “Подробнее” открывают форму обратного звонка.</p>
 
       <div class="catalog-controls">
         <button class="btn btn-outline catalog-btn active" data-filter="all">Все двери</button>
@@ -1021,15 +974,15 @@
       <div class="installed-grid">
         <article class="installed-card">
           <img src="images/Корсика.jpeg" alt="Фото установки 1">
-          <div>Установленная дверь  Корсика</div>
+          <div>Установленная дверь — Корсика</div>
         </article>
         <article class="installed-card">
           <img src="images/Лига 70.jpeg" alt="Фото установки 2">
-          <div>Установленная дверь  Лига 70</div>
+          <div>Установленная дверь — Лига 70</div>
         </article>
         <article class="installed-card">
           <img src="images/D1 Эшвайт.png" alt="Фото установки 3">
-          <div>Установленная дверь  D1 Эшвайт</div>
+          <div>Установленная дверь — D1 Эшвайт</div>
         </article>
       </div>
     </div>
@@ -1237,4 +1190,3 @@
   </script>
 </body>
 </html>
-
