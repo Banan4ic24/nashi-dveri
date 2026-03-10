@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Наши Двери  Тольятти</title>
+  <title>Наши Двери — Тольятти</title>
   <style>
     :root{
       --red:#d70000;
       --gold:#caa64a;
       --text:#111;
-      --muted:#666;
       --line:rgba(0,0,0,.07);
       --shadow:0 10px 30px rgba(0,0,0,.10);
       --shadow-lg:0 18px 50px rgba(0,0,0,.18);
@@ -334,6 +333,10 @@
       gap:10px;
       margin-bottom:18px;
     }
+    .option,
+    .select-card{
+      transition:.2s ease;
+    }
     .option{
       display:flex;
       align-items:center;
@@ -358,6 +361,10 @@
       border-color:#000;
       background:#000;
       box-shadow:inset 0 0 0 4px #fff;
+    }
+    .option.selected,
+    .select-card.selected{
+      transform:scale(.99);
     }
 
     .select-cards{
@@ -410,6 +417,10 @@
       grid-template-columns:60px 1fr;
       gap:12px;
       align-items:center;
+    }
+    .quiz-nav.one-btn{
+      grid-template-columns:60px;
+      justify-content:start;
     }
     .back-btn{
       width:60px;
@@ -639,6 +650,7 @@
       .gallery-arrow{width:40px; height:40px; font-size:24px}
       .thumb{width:58px; height:58px}
       .quiz-nav{grid-template-columns:56px 1fr}
+      .quiz-nav.one-btn{grid-template-columns:56px}
       .back-btn{width:56px; height:56px}
     }
   </style>
@@ -761,9 +773,8 @@
                 <div>Входные</div>
               </div>
             </div>
-            <div class="quiz-nav">
+            <div class="quiz-nav one-btn">
               <button class="back-btn" type="button" disabled style="opacity:.45;cursor:default;">←</button>
-              <button class="btn btn-primary" type="button" id="nextStep0">Далее</button>
             </div>
           </div>
 
@@ -774,9 +785,8 @@
               <label class="option" data-name="segment" data-value="Стандарт"><span class="radio"></span><span>Стандарт</span></label>
               <label class="option" data-name="segment" data-value="Премиум"><span class="radio"></span><span>Премиум</span></label>
             </div>
-            <div class="quiz-nav">
+            <div class="quiz-nav one-btn">
               <button class="back-btn" type="button" data-prev>←</button>
-              <button class="btn btn-outline" type="button" data-next>Далее</button>
             </div>
           </div>
 
@@ -788,9 +798,8 @@
               <label class="option" data-name="count" data-value="3"><span class="radio"></span><span>3 шт</span></label>
               <label class="option" data-name="count" data-value="4+"><span class="radio"></span><span>Более 4 шт</span></label>
             </div>
-            <div class="quiz-nav">
+            <div class="quiz-nav one-btn">
               <button class="back-btn" type="button" data-prev>←</button>
-              <button class="btn btn-outline" type="button" data-next>Далее</button>
             </div>
           </div>
 
@@ -801,9 +810,8 @@
               <label class="option" data-name="timing" data-value="В течение месяца"><span class="radio"></span><span>В течение месяца</span></label>
               <label class="option" data-name="timing" data-value="Позже"><span class="radio"></span><span>Через несколько месяцев</span></label>
             </div>
-            <div class="quiz-nav">
+            <div class="quiz-nav one-btn">
               <button class="back-btn" type="button" data-prev>←</button>
-              <button class="btn btn-outline" type="button" data-next>Далее</button>
             </div>
           </div>
 
@@ -814,9 +822,8 @@
               <label class="option" data-name="contactWay" data-value="Telegram"><span class="radio"></span><span>Telegram</span></label>
               <label class="option" data-name="contactWay" data-value="По телефону"><span class="radio"></span><span>На мобильный</span></label>
             </div>
-            <div class="quiz-nav">
+            <div class="quiz-nav one-btn">
               <button class="back-btn" type="button" data-prev>←</button>
-              <button class="btn btn-outline" type="button" data-next>Далее</button>
             </div>
           </div>
 
@@ -904,7 +911,7 @@
           </div>
         </article>
 
-        <article class="door-card" data-type="entry">
+        <article class="door-card" data-type="interior">
           <img src="images/ЛИРА ДГ.jpg" alt="ЛИРА ДГ">
           <div class="door-card-body">
             <h3>ЛИРА ДГ</h3>
@@ -913,7 +920,7 @@
           </div>
         </article>
 
-        <article class="door-card" data-type="interior">
+        <article class="door-card" data-type="entry">
           <img src="images/Термо Белый Матовый.webp" alt="Термо Белый Матовый">
           <div class="door-card-body">
             <h3>Термо Белый Матовый</h3>
@@ -985,15 +992,15 @@
       <div class="installed-grid">
         <article class="installed-card">
           <img src="images/Корсика.jpeg" alt="Фото установки 1">
-          <div>Установленная дверь  Корсика</div>
+          <div>Установленная дверь — Корсика</div>
         </article>
         <article class="installed-card">
           <img src="images/Лига 70.jpeg" alt="Фото установки 2">
-          <div>Установленная дверь  Лига 70</div>
+          <div>Установленная дверь — Лига 70</div>
         </article>
         <article class="installed-card">
           <img src="images/D1 Эшвайт.png" alt="Фото установки 3">
-          <div>Установленная дверь  D1 Эшвайт</div>
+          <div>Установленная дверь — D1 Эшвайт</div>
         </article>
       </div>
     </div>
@@ -1050,45 +1057,36 @@
       updateProgress();
     }
 
-    function getRequiredKeyByStep(stepIndex) {
-      return ['doorType', 'segment', 'count', 'timing', 'contactWay', null][stepIndex];
-    }
-
-    function canGoNext() {
-      const key = getRequiredKeyByStep(currentStep);
-      return key ? Boolean(quizState[key]) : true;
-    }
-
-    function goNext() {
-      if (!canGoNext()) {
-        alert('Пожалуйста, выберите вариант.');
-        return;
-      }
-      if (currentStep < totalSteps - 1) {
-        showStep(currentStep + 1);
-      }
-    }
-
-    document.getElementById('nextStep0').addEventListener('click', goNext);
-    document.querySelectorAll('[data-next]').forEach(btn => btn.addEventListener('click', goNext));
-    document.querySelectorAll('[data-prev]').forEach(btn => btn.addEventListener('click', () => {
-      if (currentStep > 0) showStep(currentStep - 1);
-    }));
+    document.querySelectorAll('[data-prev]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (currentStep > 0) showStep(currentStep - 1);
+      });
+    });
 
     document.querySelectorAll('.option').forEach(option => {
       option.addEventListener('click', () => {
         const name = option.dataset.name;
         const value = option.dataset.value;
+
         quizState[name] = value;
+
         document.querySelectorAll('.option[data-name="' + name + '"]').forEach(el => el.classList.remove('selected'));
         option.classList.add('selected');
+
+        setTimeout(() => {
+          if (currentStep < totalSteps - 1) {
+            showStep(currentStep + 1);
+          }
+        }, 220);
       });
     });
 
     document.querySelectorAll('.select-card').forEach(card => {
       card.addEventListener('click', () => {
         const value = card.dataset.value;
+
         quizState.doorType = value;
+
         document.querySelectorAll('.select-card').forEach(el => el.classList.remove('selected'));
         card.classList.add('selected');
 
@@ -1099,6 +1097,12 @@
           quizHeroImage.src = 'images/D1 Эшвайт.png';
           setCatalogFilter('entry');
         }
+
+        setTimeout(() => {
+          if (currentStep < totalSteps - 1) {
+            showStep(currentStep + 1);
+          }
+        }, 220);
       });
     });
 
@@ -1197,5 +1201,3 @@
   </script>
 </body>
 </html>
-
-
