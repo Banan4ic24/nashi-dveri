@@ -8,14 +8,9 @@
     :root {
       --red: #d70000;
       --gold: #d2b117;
-      --black: #101010;
-      --white: #ffffff;
-      --gray-bg: #dcdcdc;
       --text: #111111;
       --muted: #6e6e6e;
-      --radius-xl: 34px;
-      --radius-lg: 26px;
-      --radius-md: 18px;
+      --gray-bg: #dcdcdc;
       --shadow: 0 18px 45px rgba(0,0,0,.22);
       --container: 1220px;
     }
@@ -28,9 +23,10 @@
       color: var(--text);
       background: #fff;
     }
+
     a { color: inherit; text-decoration: none; }
     img { display: block; width: 100%; }
-    button, input, select { font: inherit; }
+    button, input { font: inherit; }
     .container { width: min(var(--container), calc(100% - 32px)); margin: 0 auto; }
     .hidden { display: none !important; }
 
@@ -46,15 +42,18 @@
       cursor: pointer;
       transition: .2s ease;
     }
+
     .btn-primary {
       background: linear-gradient(90deg, #ff1717, var(--red));
       color: #fff;
     }
+
     .btn-outline-light {
       background: transparent;
       border-color: rgba(255,255,255,.32);
       color: #fff;
     }
+
     .btn-outline-dark {
       background: #fff;
       border-color: var(--red);
@@ -69,6 +68,7 @@
       border-bottom: 1px solid rgba(0,0,0,.06);
       backdrop-filter: blur(10px);
     }
+
     .topbar-inner {
       display: grid;
       grid-template-columns: auto 1fr auto auto;
@@ -76,11 +76,13 @@
       align-items: center;
       padding: 18px 0;
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 16px;
     }
+
     .brand-logo {
       border: 2px solid #c31717;
       color: #c31717;
@@ -90,22 +92,38 @@
       font-size: 18px;
       line-height: 1;
     }
-    .brand-title { font-size: 16px; font-weight: 700; line-height: 1.1; }
-    .top-note { font-size: 16px; line-height: 1.15; }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .top-note {
+      font-size: 16px;
+      line-height: 1.15;
+    }
+
     .top-note b { color: #24b000; }
-    .phone { font-size: 16px; line-height: 1.1; font-weight: 700; }
+
+    .phone {
+      font-size: 16px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
     .phone strong { font-size: 20px; }
 
     .hero {
-      position: relative;
       min-height: calc(100vh - 92px);
       background:
         linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.58)),
-        url('hero-bg.jpg') center/cover no-repeat;
+        url('images/hero-bg.jpg') center/cover no-repeat;
       color: #fff;
       display: flex;
       align-items: center;
     }
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1.05fr .95fr;
@@ -113,30 +131,35 @@
       align-items: center;
       padding: 42px 0 56px;
     }
+
     h1 {
       font-size: clamp(34px, 5vw, 66px);
       line-height: 1.04;
       margin: 0 0 18px;
       max-width: 920px;
     }
+
     .hero-sub {
       font-size: clamp(18px, 2.1vw, 28px);
       max-width: 760px;
       margin: 0 0 28px;
       color: rgba(255,255,255,.94);
     }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
       margin-bottom: 34px;
     }
+
     .features {
       display: grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 18px 26px;
       max-width: 980px;
     }
+
     .feature {
       display: flex;
       align-items: center;
@@ -144,6 +167,7 @@
       font-size: 18px;
       line-height: 1.25;
     }
+
     .feature-icon {
       width: 48px;
       height: 48px;
@@ -164,18 +188,22 @@
       color: #111;
       box-shadow: var(--shadow);
     }
+
     .quiz-media {
       aspect-ratio: 16/8;
       background: #f0f0f0;
     }
+
     .quiz-media img {
       height: 100%;
       object-fit: cover;
     }
+
     .quiz-panel {
       background: var(--gray-bg);
       padding: 22px;
     }
+
     .progress-badge {
       display: inline-block;
       background: var(--red);
@@ -185,6 +213,7 @@
       padding: 9px 12px;
       margin-bottom: 10px;
     }
+
     .progress-bar {
       height: 6px;
       background: #ebb0b0;
@@ -192,14 +221,17 @@
       overflow: hidden;
       margin-bottom: 24px;
     }
+
     .progress-fill {
       height: 100%;
       width: 0%;
       background: var(--red);
       transition: width .25s ease;
     }
+
     .quiz-step { display: none; }
     .quiz-step.active { display: block; }
+
     .quiz-title {
       font-size: clamp(28px, 4vw, 54px);
       line-height: 1.05;
@@ -207,11 +239,13 @@
       margin: 0 0 26px;
       font-weight: 900;
     }
+
     .option-grid {
       display: grid;
       gap: 14px;
       margin-bottom: 24px;
     }
+
     .option {
       display: flex;
       align-items: center;
@@ -223,6 +257,7 @@
       cursor: pointer;
       user-select: none;
     }
+
     .radio {
       width: 24px;
       height: 24px;
@@ -231,17 +266,20 @@
       background: #fff;
       flex: 0 0 24px;
     }
+
     .option.selected .radio {
       border-color: #000;
       background: #000;
       box-shadow: inset 0 0 0 5px #fff;
     }
+
     .select-cards {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
       margin-bottom: 24px;
     }
+
     .select-card {
       border-radius: 26px;
       overflow: hidden;
@@ -250,20 +288,24 @@
       cursor: pointer;
       position: relative;
     }
+
     .select-card img {
       aspect-ratio: 4 / 5;
       object-fit: cover;
     }
+
     .select-card div {
       padding: 14px;
       text-align: center;
       font-weight: 800;
       font-size: 24px;
     }
+
     .select-card.selected {
       border-color: var(--red);
       box-shadow: 0 0 0 3px rgba(215,0,0,.15);
     }
+
     .select-card.selected::after {
       content: '✓';
       position: absolute;
@@ -279,12 +321,14 @@
       align-items: center;
       justify-content: center;
     }
+
     .quiz-nav {
       display: grid;
       grid-template-columns: 74px 1fr;
       gap: 16px;
       align-items: center;
     }
+
     .back-btn {
       width: 74px;
       height: 74px;
@@ -294,12 +338,14 @@
       font-size: 36px;
       cursor: pointer;
     }
+
     .quiz-form {
       display: grid;
       gap: 18px;
       max-width: 720px;
       margin: 0 auto 24px;
     }
+
     .field label {
       display: block;
       margin-bottom: 8px;
@@ -307,6 +353,7 @@
       color: #222;
       font-size: 18px;
     }
+
     .field input {
       width: 100%;
       min-height: 62px;
@@ -316,6 +363,7 @@
       padding: 14px 18px;
       font-size: 18px;
     }
+
     .success-box {
       background: rgba(255,255,255,.72);
       border-radius: 24px;
@@ -326,12 +374,14 @@
     }
 
     .section { padding: 82px 0; }
+
     .section-title {
       font-size: clamp(34px, 4vw, 58px);
       line-height: 1.05;
       margin: 0 0 14px;
       text-align: center;
     }
+
     .section-subtitle {
       text-align: center;
       color: var(--muted);
@@ -347,12 +397,19 @@
       flex-wrap: wrap;
       margin-bottom: 28px;
     }
-    .catalog-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
+
+    .catalog-btn.active {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
+
     .door-card {
       background: #fff;
       border-radius: 28px;
@@ -360,19 +417,30 @@
       box-shadow: 0 10px 28px rgba(0,0,0,.08);
       border: 1px solid rgba(0,0,0,.06);
     }
+
     .door-card img {
       aspect-ratio: 4/5;
       object-fit: cover;
     }
+
     .door-card-body { padding: 16px; }
-    .door-card-body h3 { margin: 0 0 8px; font-size: 22px; }
-    .door-card-body p { margin: 0 0 16px; color: #666; }
+
+    .door-card-body h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .door-card-body p {
+      margin: 0 0 16px;
+      color: #666;
+    }
 
     .installed-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
     }
+
     .installed-card {
       background: #fff;
       border-radius: 28px;
@@ -380,8 +448,16 @@
       box-shadow: 0 10px 28px rgba(0,0,0,.08);
       border: 1px solid rgba(0,0,0,.06);
     }
-    .installed-card img { aspect-ratio: 4 / 5; object-fit: cover; }
-    .installed-card div { padding: 16px; font-weight: 700; }
+
+    .installed-card img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .installed-card div {
+      padding: 16px;
+      font-weight: 700;
+    }
 
     .modal {
       position: fixed;
@@ -393,7 +469,9 @@
       z-index: 100;
       padding: 16px;
     }
+
     .modal.open { display: flex; }
+
     .modal-card {
       width: min(100%, 520px);
       background: #f1f1f1;
@@ -402,6 +480,7 @@
       position: relative;
       box-shadow: var(--shadow);
     }
+
     .modal-close {
       position: absolute;
       right: 16px;
@@ -414,12 +493,14 @@
       font-size: 24px;
       cursor: pointer;
     }
+
     .modal-card h3 {
       margin: 0 0 22px;
       font-size: 28px;
       line-height: 1.25;
       text-align: center;
     }
+
     .modal-form {
       display: grid;
       gap: 18px;
@@ -439,9 +520,17 @@
       .hero-grid, .catalog-grid, .installed-grid { grid-template-columns: 1fr 1fr; }
       .features { grid-template-columns: 1fr; }
     }
+
     @media (max-width: 760px) {
       .container { width: min(100% - 20px, var(--container)); }
-      .topbar-inner, .hero-grid, .catalog-grid, .installed-grid, .select-cards { grid-template-columns: 1fr; }
+      .topbar-inner,
+      .hero-grid,
+      .catalog-grid,
+      .installed-grid,
+      .select-cards {
+        grid-template-columns: 1fr;
+      }
+
       .topbar-inner { gap: 14px; }
       .hero { min-height: auto; }
       h1 { font-size: 30px; }
@@ -495,7 +584,7 @@
 
       <div class="quiz-shell" id="quiz">
         <div class="quiz-media">
-          <img id="quizHeroImage" src="interior-01.jpg" alt="Двери" />
+          <img id="quizHeroImage" src="images/interior-01.jpg" alt="Двери" />
         </div>
         <div class="quiz-panel">
           <div class="progress-badge" id="progressBadge">0%</div>
@@ -505,11 +594,11 @@
             <div class="quiz-title">Какие двери вас интересуют?</div>
             <div class="select-cards">
               <div class="select-card" data-name="doorType" data-value="Межкомнатные">
-                <img src="interior-02.jpg" alt="Межкомнатные двери">
+                <img src="images/interior-02.jpg" alt="Межкомнатные двери">
                 <div>Межкомнатные</div>
               </div>
               <div class="select-card" data-name="doorType" data-value="Входные">
-                <img src="entry-01.jpg" alt="Входные двери">
+                <img src="images/entry-01.jpg" alt="Входные двери">
                 <div>Входные</div>
               </div>
             </div>
@@ -599,16 +688,49 @@
     <div class="container">
       <h2 class="section-title">Выберите дверь</h2>
       <p class="section-subtitle">Сейчас оставил только ваши примеры: 3 межкомнатные и 1 входная дверь.</p>
+
       <div class="catalog-controls">
         <button class="btn btn-outline-dark catalog-btn active" data-filter="all">Все двери</button>
         <button class="btn btn-outline-dark catalog-btn" data-filter="interior">Межкомнатные</button>
         <button class="btn btn-outline-dark catalog-btn" data-filter="entry">Входные</button>
       </div>
+
       <div class="catalog-grid" id="catalogGrid">
-        <article class="door-card" data-type="interior"><img src="interior-01.jpg" alt="Межкомнатная дверь 1"><div class="door-card-body"><h3>Модель 01</h3><p>Межкомнатная дверь</p><button class="btn btn-primary" data-open-modal>Узнать цену</button></div></article>
-        <article class="door-card" data-type="interior"><img src="interior-02.jpg" alt="Межкомнатная дверь 2"><div class="door-card-body"><h3>Модель 02</h3><p>Межкомнатная дверь</p><button class="btn btn-primary" data-open-modal>Узнать цену</button></div></article>
-        <article class="door-card" data-type="interior"><img src="interior-03.jpg" alt="Межкомнатная дверь 3"><div class="door-card-body"><h3>Модель 03</h3><p>Межкомнатная дверь</p><button class="btn btn-primary" data-open-modal>Узнать цену</button></div></article>
-        <article class="door-card" data-type="entry"><img src="entry-01.jpg" alt="Входная дверь 1"><div class="door-card-body"><h3>Модель 04</h3><p>Входная дверь</p><button class="btn btn-primary" data-open-modal>Узнать цену</button></div></article>
+        <article class="door-card" data-type="interior">
+          <img src="images/interior-01.jpg" alt="Межкомнатная дверь 1">
+          <div class="door-card-body">
+            <h3>Модель 01</h3>
+            <p>Межкомнатная дверь</p>
+            <button class="btn btn-primary" data-open-modal>Узнать цену</button>
+          </div>
+        </article>
+
+        <article class="door-card" data-type="interior">
+          <img src="images/interior-02.jpg" alt="Межкомнатная дверь 2">
+          <div class="door-card-body">
+            <h3>Модель 02</h3>
+            <p>Межкомнатная дверь</p>
+            <button class="btn btn-primary" data-open-modal>Узнать цену</button>
+          </div>
+        </article>
+
+        <article class="door-card" data-type="interior">
+          <img src="images/interior-03.jpg" alt="Межкомнатная дверь 3">
+          <div class="door-card-body">
+            <h3>Модель 03</h3>
+            <p>Межкомнатная дверь</p>
+            <button class="btn btn-primary" data-open-modal>Узнать цену</button>
+          </div>
+        </article>
+
+        <article class="door-card" data-type="entry">
+          <img src="images/entry-01.jpg" alt="Входная дверь 1">
+          <div class="door-card-body">
+            <h3>Модель 04</h3>
+            <p>Входная дверь</p>
+            <button class="btn btn-primary" data-open-modal>Узнать цену</button>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -617,9 +739,18 @@
     <div class="container">
       <h2 class="section-title">Фото установленных дверей</h2>
       <div class="installed-grid">
-        <article class="installed-card"><img src="interior-01.jpg" alt="Фото двери 1"><div>Пример установки 1</div></article>
-        <article class="installed-card"><img src="interior-02.jpg" alt="Фото двери 2"><div>Пример установки 2</div></article>
-        <article class="installed-card"><img src="interior-03.jpg" alt="Фото двери 3"><div>Пример установки 3</div></article>
+        <article class="installed-card">
+          <img src="images/interior-01.jpg" alt="Фото двери 1">
+          <div>Пример установки 1</div>
+        </article>
+        <article class="installed-card">
+          <img src="images/interior-02.jpg" alt="Фото двери 2">
+          <div>Пример установки 2</div>
+        </article>
+        <article class="installed-card">
+          <img src="images/interior-03.jpg" alt="Фото двери 3">
+          <div>Пример установки 3</div>
+        </article>
       </div>
     </div>
   </section>
@@ -716,10 +847,10 @@
         card.classList.add('selected');
 
         if (value === 'Межкомнатные') {
-          quizHeroImage.src = 'interior-02.jpg';
+          quizHeroImage.src = 'images/interior-02.jpg';
           setCatalogFilter('interior');
         } else {
-          quizHeroImage.src = 'entry-01.jpg';
+          quizHeroImage.src = 'images/entry-01.jpg';
           setCatalogFilter('entry');
         }
       });
@@ -728,7 +859,7 @@
     const quizForm = document.getElementById('quizForm');
     const quizSuccess = document.getElementById('quizSuccess');
 
-    quizForm.addEventListener('submit', async (e) => {
+    quizForm.addEventListener('submit', (e) => {
       e.preventDefault();
       quizForm.classList.add('hidden');
       quizSuccess.classList.remove('hidden');
@@ -745,6 +876,7 @@
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
     }
+
     function closeModal() {
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
@@ -756,7 +888,7 @@
       if (e.target === modal) closeModal();
     });
 
-    callbackForm.addEventListener('submit', async (e) => {
+    callbackForm.addEventListener('submit', (e) => {
       e.preventDefault();
       callbackForm.classList.add('hidden');
       callbackSuccess.classList.remove('hidden');
